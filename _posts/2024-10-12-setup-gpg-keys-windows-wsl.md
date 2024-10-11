@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "How to Use a Windows-Created GPG Key in WSL"
-date:   2024-10-12 10:00:00
+date:   2024-10-12 00:00:00
 categories: Architecture
 tags: featured
+tipue_search_active: true
 # image: /assets/article_images/2014-08-29-welcome-to-jekyll/desktop.JPG
 ---
 
