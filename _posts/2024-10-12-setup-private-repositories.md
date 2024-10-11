@@ -7,7 +7,7 @@ tags: featured
 # image: /assets/article_images/2014-08-29-welcome-to-jekyll/desktop.JPG
 ---
 
-# Accessing Private Repositories on GitHub Container Registry (GHCR) with k3s and RKE
+## Accessing Private Repositories on GitHub Container Registry (GHCR) with k3s and RKE
 
 In this guide, we'll walk through the steps to configure k3s and Rancher Kubernetes Engine (RKE) clusters to pull images from private repositories hosted on GitHub Container Registry (GHCR). By the end of this guide, your clusters will be able to securely access and deploy containers from private GHCR repositories.
 
