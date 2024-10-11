@@ -7,7 +7,6 @@ tags: featured
 # image: /assets/article_images/2014-08-29-welcome-to-jekyll/desktop.JPG
 ---
 
-```markdown
 If you've generated a GPG key on Windows and need to use it within your WSL (Windows Subsystem for Linux) environment, this guide will walk you through the steps to export the key from Windows, import it into WSL, and configure it for use in Git or other applications.
 
 ## Step 1: Export the GPG Key from Windows
@@ -16,6 +15,7 @@ First, we need to export the GPG key from the Windows environment.
 
 1. Open a terminal on Windows (either PowerShell or Command Prompt).
 2. List your GPG keys to find the key you want to export:
+
    ```bash
    gpg --list-secret-keys --keyid-format LONG
    ```
