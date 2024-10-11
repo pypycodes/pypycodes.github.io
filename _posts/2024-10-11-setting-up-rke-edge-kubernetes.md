@@ -4,6 +4,7 @@ title:  "Setting up RKE (Rancher Kubernetes Engine) for Edge Devices"
 date:   2024-10-11 10:00:00
 categories: Architecture
 tags: featured
+tipue_search_active: true
 # image: /assets/article_images/2014-08-29-welcome-to-jekyll/desktop.JPG
 ---
 Rancher Kubernetes Engine (RKE) is a Kubernetes installer that simplifies the deployment of Kubernetes clusters in various environments. RKE is known for its ease of use and compatibility with multiple platforms, including on-premises servers and cloud environments. This guide will take you through setting up a Kubernetes cluster with RKE on Linux servers.
