@@ -6,7 +6,8 @@ gems:
 # Site settings
 title: "IT Architect's Blog"
 description: > # this means to ignore newlines until "email:"
-  Blog on various trends, how-tos, hacks, set-ups, kubernetes, Containers, GitHub Actions, DevOps Tooling and  to the best practices.
+  A Blog attempt on various  architecture trends, how-tos, hacks, set-ups, python, ansible cloud, linux, kubernetes, Containers, GitHub Actions, DevOps Tooling and 
+  best practices.
 
 email: pypycodes@outlook.com
 #blog logo
