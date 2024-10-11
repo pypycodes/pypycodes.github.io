@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Accessing Private Repositories on GitHub Container Registry (GHCR) with k3s and RKE"
-date:   2014-10-12 11:00:00
+date:   2024-10-12 11:00:00
 categories: Architecture
 tags: featured
 # image: /assets/article_images/2014-08-29-welcome-to-jekyll/desktop.JPG
