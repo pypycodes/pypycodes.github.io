@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "How to Use a Windows-Created GPG Key in WSL"
+title:  "Accessing Private Repositories on GitHub Container Registry (GHCR) with k3s and RKE"
 date:   2014-10-12 11:00:00
 categories: Architecture
 tags: featured
