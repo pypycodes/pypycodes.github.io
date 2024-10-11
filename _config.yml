@@ -54,4 +54,11 @@ social:
     share_title:
     share_link:
 
+  - icon:	facebook
+    url:	https://facebook.com/pypycodes
+    desc:	Follow on Facebook
+    share_url:
+    share_title:
+    share_link:
+
 
