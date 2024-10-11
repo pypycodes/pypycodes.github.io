@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IT Architect&apos;s Blog</title>
+    <description>Blog on IT Architecture, from the latest trends to the best practices.
+</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 11 Oct 2024 18:37:17 +0530</pubDate>
+    <lastBuildDate>Fri, 11 Oct 2024 18:37:17 +0530</lastBuildDate>
+    <generator>Jekyll v3.10.0</generator>
+    
+      <item>
+        <title>How to Use a Windows-Created GPG Key in WSL</title>
+        <description>&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;If you&apos;ve generated a GPG key on Windows and need to use it within your WSL (Windows Subsystem for Linux) environment, this guide will walk you through the steps to export the key from Windows, import it into WSL, and configure it for use in Git or other applications.
+
+&lt;span class=&quot;gu&quot;&gt;## Step 1: Export the GPG Key from Windows&lt;/span&gt;
+
+First, we need to export the GPG key from the Windows environment.
+&lt;span class=&quot;p&quot;&gt;
+1.&lt;/span&gt; Open a terminal on Windows (either PowerShell or Command Prompt).
+&lt;span class=&quot;p&quot;&gt;2.&lt;/span&gt; List your GPG keys to find the key you want to export:
+   &lt;span class=&quot;p&quot;&gt;```&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;bash
+&lt;/span&gt;   gpg &lt;span class=&quot;nt&quot;&gt;--list-secret-keys&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--keyid-format&lt;/span&gt; LONG
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Take note of the key ID for the key you want to export. It will appear after &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sec   rsa4096/&lt;/code&gt;.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Export the private key by running:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg &lt;span class=&quot;nt&quot;&gt;--export-secret-keys&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--armor&lt;/span&gt; KEY_ID &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; my-private-key.asc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;Replace &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;KEY_ID&lt;/code&gt; with the actual GPG key ID. This will create a file named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;my-private-key.asc&lt;/code&gt; containing your private key in ASCII format.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If you also need the public key, export it as follows:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg &lt;span class=&quot;nt&quot;&gt;--export&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--armor&lt;/span&gt; KEY_ID &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; my-public-key.asc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;step-2-import-the-gpg-key-into-wsl&quot;&gt;Step 2: Import the GPG Key into WSL&lt;/h2&gt;
+
+&lt;p&gt;With the key exported, you can now import it into WSL.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Open your WSL terminal.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Navigate to the directory containing the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.asc&lt;/code&gt; files. If the files are saved on the Windows side, they can be accessed through the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/mnt&lt;/code&gt; directory. For example:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; /mnt/c/Users/YourUsername/PathToKeys/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Import the private key into WSL:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg &lt;span class=&quot;nt&quot;&gt;--import&lt;/span&gt; my-private-key.asc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;If you exported the public key as well, import it with:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg &lt;span class=&quot;nt&quot;&gt;--import&lt;/span&gt; my-public-key.asc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;After importing, set the key as trusted:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg &lt;span class=&quot;nt&quot;&gt;--edit-key&lt;/span&gt; KEY_ID
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;Inside the GPG prompt, type:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;trust
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;Choose the appropriate trust level (usually &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;5&lt;/code&gt; for full trust) and then type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;quit&lt;/code&gt; to exit.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;step-3-verify-the-key-in-wsl&quot;&gt;Step 3: Verify the Key in WSL&lt;/h2&gt;
+
+&lt;p&gt;To confirm the key was successfully imported, list the keys in WSL:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg &lt;span class=&quot;nt&quot;&gt;--list-secret-keys&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--keyid-format&lt;/span&gt; LONG
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Your imported key should be displayed in the list.&lt;/p&gt;
+
+&lt;h2 id=&quot;step-4-configure-git-to-use-the-gpg-key-optional&quot;&gt;Step 4: Configure Git to Use the GPG Key (Optional)&lt;/h2&gt;
+
+&lt;p&gt;If you want to use this GPG key to sign commits in Git, configure Git with the following steps:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Set the key as the signing key:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; user.signingkey KEY_ID
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;Replace &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;KEY_ID&lt;/code&gt; with your GPG key ID.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Enable automatic GPG signing for Git commits:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git config &lt;span class=&quot;nt&quot;&gt;--global&lt;/span&gt; commit.gpgSign &lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;By following these steps, you can seamlessly use your GPG key created on Windows inside your WSL environment. This setup is particularly useful if you use Git on both Windows and WSL and want to keep your GPG key consistent across environments.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 12 Oct 2014 15:30:00 +0530</pubDate>
+        <link>http://localhost:4000/architecture/2014/10/12/setup-gpg-keys-windows-wsl.html</link>
+        <guid isPermaLink="true">http://localhost:4000/architecture/2014/10/12/setup-gpg-keys-windows-wsl.html</guid>
+        
+        <category>featured</category>
+        
+        
+        <category>Architecture</category>
+        
+      </item>
+    
+      <item>
+        <title>Setting up RKE (Rancher Kubernetes Engine) for Edge Devices</title>
+        <description>&lt;p&gt;Rancher Kubernetes Engine (RKE) is a Kubernetes installer that simplifies the deployment of Kubernetes clusters in various environments. RKE is known for its ease of use and compatibility with multiple platforms, including on-premises servers and cloud environments. This guide will take you through setting up a Kubernetes cluster with RKE on Linux servers.&lt;/p&gt;
+
+&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
+
+&lt;p&gt;Before you begin, ensure you have:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Three or more Linux servers&lt;/strong&gt; (Ubuntu 20.04 or newer is preferred) with at least 2 GB of RAM and 2 vCPUs each.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Sudo access&lt;/strong&gt; on each server.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Access to the internet&lt;/strong&gt; for downloading necessary software.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Docker&lt;/strong&gt; installed on each server. If Docker is not installed, follow the instructions in Step 1.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;step-1-prepare-the-servers&quot;&gt;Step 1: Prepare the Servers&lt;/h2&gt;
+
+&lt;h3 id=&quot;11-install-docker&quot;&gt;1.1 Install Docker&lt;/h3&gt;
+
+&lt;p&gt;If Docker is not already installed, use the following commands to set it up on each server:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-fsSL&lt;/span&gt; https://get.docker.com | sh
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;docker &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl start docker
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Verify Docker installation:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;12-disable-swap&quot;&gt;1.2 Disable Swap&lt;/h3&gt;
+
+&lt;p&gt;Kubernetes requires swap to be disabled for stable operation. Run the following command to temporarily disable swap:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;swapoff &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To disable swap permanently, open the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/fstab&lt;/code&gt; file and comment out any swap entries.&lt;/p&gt;
+
+&lt;h3 id=&quot;13-configure-firewall-optional&quot;&gt;1.3 Configure Firewall (Optional)&lt;/h3&gt;
+
+&lt;p&gt;If you have a firewall enabled, make sure to allow traffic on the necessary ports for Kubernetes:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Allow traffic on port 6443 for Kubernetes API&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw allow 6443
+
+&lt;span class=&quot;c&quot;&gt;# Allow traffic for communication between nodes (ports 2379, 2380, 10250, 10255, etc.)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw allow 2379:2380/tcp
+&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;ufw allow 10250:10255/tcp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;step-2-install-rke&quot;&gt;Step 2: Install RKE&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Download the RKE Binary&lt;/strong&gt;&lt;br /&gt;
+On your local machine, download the latest RKE binary:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;wget https://github.com/rancher/rke/releases/download/v1.3.13/rke_linux-amd64 &lt;span class=&quot;nt&quot;&gt;-O&lt;/span&gt; rke
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Make the RKE Binary Executable&lt;/strong&gt;&lt;br /&gt;
+Change the permissions to make the file executable:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;chmod&lt;/span&gt; +x rke
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Move RKE to a System Path&lt;/strong&gt;&lt;br /&gt;
+To access RKE from anywhere, move it to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/local/bin&lt;/code&gt;:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo mv &lt;/span&gt;rke /usr/local/bin/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Verify Installation&lt;/strong&gt;&lt;br /&gt;
+Confirm the installation by checking the RKE version:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rke &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;step-3-configure-the-cluster&quot;&gt;Step 3: Configure the Cluster&lt;/h2&gt;
+
+&lt;h3 id=&quot;31-create-a-cluster-configuration-file&quot;&gt;3.1 Create a Cluster Configuration File&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Generate the Cluster Configuration&lt;/strong&gt;&lt;br /&gt;
+On your local machine, run the following command to generate a cluster configuration file (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cluster.yml&lt;/code&gt;):&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rke config &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; cluster.yml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;Follow the prompts to specify the details of your cluster. You will need to provide the IP addresses of your nodes, set roles (etcd, controlplane, worker), and optionally define SSH keys or passwords for accessing each node.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Edit the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cluster.yml&lt;/code&gt; Configuration&lt;/strong&gt;&lt;br /&gt;
+Once the file is generated, you can manually edit the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cluster.yml&lt;/code&gt; file to make any adjustments. The file should include at least one etcd node, one control plane node, and one or more worker nodes.&lt;/p&gt;
+
+    &lt;p&gt;Here’s an example configuration for a simple three-node cluster:&lt;/p&gt;
+
+    &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;192.168.1.101&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ubuntu&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;etcd&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;controlplane&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;worker&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;ssh_key_path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;~/.ssh/id_rsa&lt;/span&gt;
+
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;192.168.1.102&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ubuntu&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;worker&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;ssh_key_path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;~/.ssh/id_rsa&lt;/span&gt;
+
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;address&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;192.168.1.103&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ubuntu&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;role&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;worker&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;ssh_key_path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;~/.ssh/id_rsa&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;32-validate-node-access&quot;&gt;3.2 Validate Node Access&lt;/h3&gt;
+
+&lt;p&gt;Ensure that you can SSH into each node without needing to enter a password, as RKE relies on SSH for deployment. Test SSH access with the following command:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ssh ubuntu@192.168.1.101
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;step-4-deploy-the-cluster&quot;&gt;Step 4: Deploy the Cluster&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Run the RKE Deployment&lt;/strong&gt;&lt;br /&gt;
+With the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cluster.yml&lt;/code&gt; file configured, you can deploy your cluster:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;rke up &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; cluster.yml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;RKE will connect to each node, deploy Kubernetes components, and set up the cluster based on your configuration. The process may take several minutes.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Check for Errors&lt;/strong&gt;&lt;br /&gt;
+Monitor the output for any errors. If RKE completes successfully, you will see messages indicating that the cluster has been successfully deployed.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;step-5-access-the-cluster&quot;&gt;Step 5: Access the Cluster&lt;/h2&gt;
+
+&lt;h3 id=&quot;51-retrieve-kubeconfig-file&quot;&gt;5.1 Retrieve kubeconfig File&lt;/h3&gt;
+
+&lt;p&gt;After deployment, RKE generates a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kube_config_cluster.yml&lt;/code&gt; file in the same directory. This file is required to access and manage the cluster with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Move kubeconfig to .kube Directory&lt;/strong&gt;&lt;br /&gt;
+Copy the generated kubeconfig file to your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.kube&lt;/code&gt; directory:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; ~/.kube
+&lt;span class=&quot;nb&quot;&gt;cp &lt;/span&gt;kube_config_cluster.yml ~/.kube/config
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Verify Cluster Access&lt;/strong&gt;&lt;br /&gt;
+Check the cluster status with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kubectl&lt;/code&gt;:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get nodes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;You should see a list of all nodes in the cluster, showing their roles and statuses.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;step-6-testing-the-cluster&quot;&gt;Step 6: Testing the Cluster&lt;/h2&gt;
+
+&lt;p&gt;To ensure the cluster is functioning correctly, let’s deploy a simple application.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Deploy an Nginx Deployment&lt;/strong&gt;&lt;br /&gt;
+Run the following command to create an Nginx deployment:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl create deployment nginx &lt;span class=&quot;nt&quot;&gt;--image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nginx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Expose the Nginx Deployment&lt;/strong&gt;&lt;br /&gt;
+Expose the deployment as a LoadBalancer service:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl expose deployment nginx &lt;span class=&quot;nt&quot;&gt;--type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;LoadBalancer &lt;span class=&quot;nt&quot;&gt;--port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;80
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Retrieve the Service Information&lt;/strong&gt;&lt;br /&gt;
+Check the service details and obtain the external IP:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get services
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;You can now access Nginx by navigating to the external IP in a browser.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;You have successfully set up a Kubernetes cluster using Rancher Kubernetes Engine! This setup provides a robust, production-grade Kubernetes environment that you can use for development, testing, and deployment. Explore further by deploying different workloads and integrating tools to manage your cluster.&lt;/p&gt;
+
+&lt;p&gt;RKE’s flexibility and simplicity make it a popular choice for deploying Kubernetes clusters across diverse environments. With your new cluster, you’re ready to dive into Kubernetes and start deploying containerized applications.&lt;/p&gt;
+
+&lt;p&gt;This article should provide a comprehensive and clear overview of setting up an RKE cluster, suitable for anyone looking to get started with Kubernetes in a manageable way. Enjoy working with your RKE-powered Kubernetes cluster!&lt;/p&gt;
+</description>
+        <pubDate>Sat, 11 Oct 2014 15:30:00 +0530</pubDate>
+        <link>http://localhost:4000/architecture/2014/10/11/setting-up-rke-edge-kubernetes.html</link>
+        <guid isPermaLink="true">http://localhost:4000/architecture/2014/10/11/setting-up-rke-edge-kubernetes.html</guid>
+        
+        <category>featured</category>
+        
+        
+        <category>Architecture</category>
+        
+      </item>
+    
+      <item>
+        <title>Setting up K3S Kubernetes for Edge</title>
+        <description>&lt;p&gt;Kubernetes, the leading platform for container orchestration, can sometimes be resource-intensive, especially for smaller deployments or edge computing environments. Enter &lt;strong&gt;K3s&lt;/strong&gt; – a lightweight, certified Kubernetes distribution by Rancher Labs. It’s specifically designed to be low on resources, making it ideal for development, IoT, and edge use cases.&lt;/p&gt;
+
+&lt;p&gt;In this guide, we’ll walk through the process of setting up a K3s cluster. This article assumes you have basic knowledge of Linux commands and server setup.&lt;/p&gt;
+
+&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
+
+&lt;p&gt;Before starting, ensure you have:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Two or more Linux servers&lt;/strong&gt; (Ubuntu 20.04 or newer is preferred) with at least 1 GB of RAM and 1 vCPU each.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Sudo privileges&lt;/strong&gt; on each server.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Access to the internet&lt;/strong&gt; to download and install K3s.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;step-1-prepare-the-environment&quot;&gt;Step 1: Prepare the Environment&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Update the System Packages&lt;/strong&gt;&lt;br /&gt;
+Log in to each server and update the package lists:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt update &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt upgrade &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Disable Swap&lt;/strong&gt;&lt;br /&gt;
+Kubernetes recommends disabling swap to ensure stable resource management:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;swapoff &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;To disable swap permanently, edit the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/fstab&lt;/code&gt; file and comment out any line that references swap.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Install Necessary Tools&lt;/strong&gt;&lt;br /&gt;
+On each server, install &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt; (if not already installed) and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;iptables&lt;/code&gt;:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;curl iptables &lt;span class=&quot;nt&quot;&gt;-y&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;step-2-install-k3s-on-the-master-node&quot;&gt;Step 2: Install K3s on the Master Node&lt;/h2&gt;
+
+&lt;p&gt;The master node, or server node in K3s terminology, will manage the cluster and handle control plane activities.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Run the K3s Installation Script&lt;/strong&gt;&lt;br /&gt;
+On your primary server, execute the following command to install K3s:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-sfL&lt;/span&gt; https://get.k3s.io | sh -
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;This script will download and install K3s. It also sets up systemd services to automatically start K3s on boot.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Verify the Installation&lt;/strong&gt;&lt;br /&gt;
+Check the status of K3s to ensure it’s running:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl status k3s
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;You should see the K3s service listed as active.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Retrieve the Node Token&lt;/strong&gt;&lt;br /&gt;
+To join worker nodes, you’ll need the &lt;strong&gt;node token&lt;/strong&gt;, which is generated during the K3s installation. Retrieve it with:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo cat&lt;/span&gt; /var/lib/rancher/k3s/server/node-token
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;Copy the token as you’ll need it in the next step to connect worker nodes to the master node.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;step-3-install-k3s-on-worker-nodes&quot;&gt;Step 3: Install K3s on Worker Nodes&lt;/h2&gt;
+
+&lt;p&gt;On each worker node, you will install K3s with a command that points to the master node’s IP and uses the node token.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Run the K3s Installation Script with Master Node Details&lt;/strong&gt;&lt;br /&gt;
+Replace &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;MASTER_IP&amp;gt;&lt;/code&gt; with the IP address of your master node and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;NODE_TOKEN&amp;gt;&lt;/code&gt; with the token you copied in the previous step:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-sfL&lt;/span&gt; https://get.k3s.io | &lt;span class=&quot;nv&quot;&gt;K3S_URL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;https://&amp;lt;MASTER_IP&amp;gt;:6443 &lt;span class=&quot;nv&quot;&gt;K3S_TOKEN&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;NODE_TOKEN&amp;gt; sh -
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Verify Node Connection&lt;/strong&gt;&lt;br /&gt;
+After a minute or so, check the status of K3s on each worker node:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;systemctl status k3s-agent
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Confirm Nodes Are Connected&lt;/strong&gt;&lt;br /&gt;
+On the master node, list the nodes to verify they’re successfully connected:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;k3s kubectl get nodes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;You should see both the master and worker nodes listed.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;step-4-testing-the-cluster&quot;&gt;Step 4: Testing the Cluster&lt;/h2&gt;
+
+&lt;p&gt;To ensure everything is functioning correctly, let’s deploy a simple application.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Deploy an Nginx Pod&lt;/strong&gt;&lt;br /&gt;
+Use the following command on the master node to deploy an Nginx pod:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;k3s kubectl create deployment nginx &lt;span class=&quot;nt&quot;&gt;--image&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;nginx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Verify Pod Status&lt;/strong&gt;&lt;br /&gt;
+Check the status of the newly created Nginx pod:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;k3s kubectl get pods
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Expose Nginx Deployment as a Service&lt;/strong&gt;&lt;br /&gt;
+Make the Nginx deployment accessible by exposing it as a LoadBalancer service:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;k3s kubectl expose deployment nginx &lt;span class=&quot;nt&quot;&gt;--type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;LoadBalancer &lt;span class=&quot;nt&quot;&gt;--port&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;80
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Retrieve the Service IP&lt;/strong&gt;&lt;br /&gt;
+List the services to get the external IP:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;k3s kubectl get services
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;Access this IP from your browser to see the Nginx welcome page, verifying your K3s setup is successful.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;step-5-configuring-kubectl-access-locally&quot;&gt;Step 5: Configuring kubectl Access Locally&lt;/h2&gt;
+
+&lt;p&gt;To manage the K3s cluster from your local machine, you can copy the kubeconfig file.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Copy the kubeconfig File&lt;/strong&gt;&lt;br /&gt;
+Run the following command on the master node to copy the configuration file:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo cat&lt;/span&gt; /etc/rancher/k3s/k3s.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;Copy the output and save it as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;k3s.yaml&lt;/code&gt; on your local machine.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Configure kubectl to Use the K3s Config File&lt;/strong&gt;&lt;br /&gt;
+On your local machine, set the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;KUBECONFIG&lt;/code&gt; environment variable:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;KUBECONFIG&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/path/to/k3s.yaml
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Verify kubectl Connectivity&lt;/strong&gt;&lt;br /&gt;
+Check the nodes from your local machine to verify the connection:&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;kubectl get nodes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;If you see the list of nodes, you’ve successfully connected to the K3s cluster!&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Congratulations! You have successfully set up a lightweight Kubernetes cluster using K3s. This setup is perfect for development environments, small-scale deployments, and edge computing applications. K3s is a versatile and resource-efficient way to run Kubernetes, bringing the power of container orchestration to resource-constrained environments.&lt;/p&gt;
+
+&lt;p&gt;Feel free to explore further by deploying additional workloads, experimenting with Helm charts, and managing your cluster with various Kubernetes tools. Happy coding!&lt;/p&gt;
+</description>
+        <pubDate>Sat, 11 Oct 2014 15:30:00 +0530</pubDate>
+        <link>http://localhost:4000/architecture/2014/10/11/setting-up-edge-kubernetes.html</link>
+        <guid isPermaLink="true">http://localhost:4000/architecture/2014/10/11/setting-up-edge-kubernetes.html</guid>
+        
+        <category>featured</category>
+        
+        
+        <category>Architecture</category>
+        
+      </item>
+    
+      <item>
+        <title>Well Known Architecture for Kubernetes Microservices</title>
+        <description>&lt;p&gt;As organizations increasingly embrace microservices for their scalability, resilience, and efficiency, Kubernetes has become the de facto platform for orchestrating these services. Kubernetes, with its container management prowess, aligns naturally with the microservices architecture. However, deploying microservices on Kubernetes introduces its own set of challenges. Below are the best practices that can help architects effectively design and manage microservices on Kubernetes.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Design for Statelessness
+Stateless services are easier to scale and manage within a Kubernetes environment. Stateless services can be quickly restarted, scaled up or down, and moved across nodes with minimal disruption.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Best Practices:&lt;/p&gt;
+
+&lt;p&gt;Use Persistent Volumes: For services that require state (e.g., databases), use Kubernetes Persistent Volumes (PVs) to ensure data persistence across restarts.
+Externalize State Storage: Offload state management to dedicated storage solutions like AWS RDS, Azure SQL Database, or managed NoSQL databases such as MongoDB Atlas.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Implement Service Mesh for Inter-Service Communication
+A service mesh provides visibility, control, and security for communication among microservices, essential for large-scale deployments. Popular service meshes like Istio, Linkerd, and Consul can streamline this process.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Best Practices:&lt;/p&gt;
+
+&lt;p&gt;Centralize Traffic Management: Use a service mesh to handle traffic routing, load balancing, and failover for each service independently.
+Enable Observability: Service meshes often come with built-in telemetry, metrics, and tracing that provide visibility into service performance.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Utilize Kubernetes Namespaces for Isolation
+Namespaces in Kubernetes provide a mechanism for isolating and managing resources for different environments or teams within a single cluster. This helps in structuring large projects or multi-tenant environments.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Best Practices:&lt;/p&gt;
+
+&lt;p&gt;Environment Segregation: Create separate namespaces for different environments (e.g., dev, staging, prod) to isolate resources and prevent conflicts.
+Resource Quotas and Limits: Set resource quotas and limits to prevent any one namespace from exhausting the cluster’s resources.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Optimize Autoscaling with Horizontal Pod Autoscaler (HPA)
+Autoscaling ensures that microservices can handle varying loads efficiently without wasting resources. Kubernetes’ Horizontal Pod Autoscaler (HPA) is an essential tool that automatically adjusts the number of pod replicas based on observed CPU utilization or other custom metrics.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Best Practices:&lt;/p&gt;
+
+&lt;p&gt;Set Realistic Scaling Thresholds: Establish thresholds that reflect actual service needs and prevent unnecessary scaling events.
+Use Custom Metrics: For better accuracy, supplement CPU-based scaling with custom metrics that better reflect the specific service’s load.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Leverage Network Policies for Security
+Microservices architectures increase the number of inter-service communication channels, which can expose vulnerabilities. Network policies in Kubernetes can help control which services can communicate with each other.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Best Practices:&lt;/p&gt;
+
+&lt;p&gt;Enforce Least Privilege Access: Only allow the necessary traffic between services, reducing the attack surface.
+Use Network Segmentation: Group services with similar security requirements into network segments, each with specific access rules.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Centralize Configuration and Secrets Management
+Configuration and secrets management are crucial for maintaining secure and consistent environments across services. Kubernetes offers ConfigMaps and Secrets for managing configurations and sensitive information.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Best Practices:&lt;/p&gt;
+
+&lt;p&gt;Avoid Hard-Coding Configurations: Use ConfigMaps and Secrets to externalize configurations from application code.
+Encrypt Secrets: Kubernetes encrypts Secrets by default, but consider additional security layers like HashiCorp Vault for enhanced security.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Implement Logging and Monitoring from the Outset
+Monitoring and logging are essential for identifying and resolving issues in a microservices architecture. Kubernetes offers integrations with various monitoring and logging tools, such as Prometheus, Grafana, and ELK Stack.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Best Practices:&lt;/p&gt;
+
+&lt;p&gt;Enable Centralized Logging: Use tools like Fluentd or Logstash to aggregate logs from all services to a centralized logging system.
+Monitor Key Metrics: Track vital metrics like request latency, error rates, and pod CPU/Memory utilization to gain insights into service health.
+Conclusion
+Deploying microservices on Kubernetes offers many benefits but requires careful planning and adherence to best practices. By focusing on statelessness, service meshes, namespaces, autoscaling, network policies, centralized configurations, and robust monitoring, you can ensure a resilient, scalable, and secure microservices architecture.&lt;/p&gt;
+
+&lt;p&gt;Embrace these best practices to unlock the full potential of Kubernetes in your microservices journey and navigate challenges with confidence.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 11 Oct 2014 15:30:00 +0530</pubDate>
+        <link>http://localhost:4000/architecture/2014/10/11/kubernetes-best-practices.html</link>
+        <guid isPermaLink="true">http://localhost:4000/architecture/2014/10/11/kubernetes-best-practices.html</guid>
+        
+        <category>featured</category>
+        
+        
+        <category>Architecture</category>
+        
+      </item>
+    
+  </channel>
+</rss>
