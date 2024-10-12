@@ -1,78 +1,89 @@
-mediator
-========
+# [TeXt Theme](https://github.com/kitian616/jekyll-TeXt-theme)
 
-A medium inspired Jekyll blog theme. The basic idea came from the Ghost theme
-[Readium 2.0](http://www.svenread.com/readium-ghost-theme/). I use mediator on my own blog [The Base](http://blog.base68.com).
+[![license](https://img.shields.io/github/license/kitian616/jekyll-TeXt-theme.svg)](https://github.com/kitian616/jekyll-TeXt-theme/blob/master/LICENSE)
+[![Gem Version](https://img.shields.io/gem/v/jekyll-text-theme.svg)](https://github.com/kitian616/jekyll-TeXt-theme/releases)
+[![Travis](https://img.shields.io/travis/kitian616/jekyll-TeXt-theme.svg)](https://travis-ci.org/kitian616/jekyll-TeXt-theme)
+[![Tip Me via PayPal](https://img.shields.io/badge/PayPal-tip%20me-1462ab.svg?logo=paypal)](https://www.paypal.me/kitian616)
+[![Tip Me via Bitcoin](https://img.shields.io/badge/Bitcoin-tip%20me-f7931a.svg?logo=bitcoin)](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/docs/assets/images/3Fkufxcw2xd8HnaRJBNK4ccdtkUDyyNu4V.jpg)
 
-Screenshots
---------
-![screenshot](/assets/images/screenshot1.jpg)
-![screenshot](/assets/images/screenshot2.jpg)
-![screenshot](/assets/images/screenshot3.jpg)
+![TeXt Theme](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/TeXt-home.jpg)
 
-Features
--------
-* Fully Responsive layout
-* Use header images in articles, if you want to (add tag "image" and url to the image in the front matter section of a post)
-* Minimal design
-* Featured article support
-* FontAwesome implemented for easy use of icons fonts
-* Free & Open Source Font usage
+![TeXt Theme Details](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/TeXt-layouts.png)
 
-Getting Started
----
-- [Fork this repository](https://github.com/dirkfabisch/mediator)
-- Clone it: `git clone https://github.com/YOUR-USER/mediator`
-- Install the requried gems ([GitHub Pages](https://github.com/github/pages-gem), [Bourbon](https://github.com/thoughtbot/bourbon) and [Jekyll](https://github.com/jekyll/jekyll), [Jemoji](https://github.com/jekyll/jemoji)): `bundle install`
-- Run the jekyll server: `bundle exec jekyll serve`
+TeXt is a super customizable Jekyll theme for personal site, team site, blog, project, documentation, etc. Similar to iOS 11 style, it has large and prominent titles, round buttons and cards.
 
-You should have a server up and running locally at <http://localhost:4000>.
+**[Change Log](https://github.com/kitian616/jekyll-TeXt-theme/blob/master/CHANGELOG.md)** | **[中文](https://github.com/kitian616/jekyll-TeXt-theme/blob/master/README-zh.md)**
 
-Configuration
------
+## Features
 
-The main settings happen in side of the _config.yml file:
+- Responsive
+- Semantic HTML
+- Skins
+- Highlight Theme
+- Internationalization
+- Search
+- Table of contents
+- Authors
+- Additional styles (alert, tag, image, icon, button, grid, etc)
+- Extensions (audios, videos, slides, demos)
+- Markdown enhancements ([MathJax](https://www.mathjax.org/), [mermaid](https://mermaidjs.github.io/), [chartjs](http://www.chartjs.org/))
+- Sharing ([AddToAny](https://www.addtoany.com/), [AddThis](https://www.addthis.com/))
+- Comments ([Disqus](https://disqus.com/), [Gitalk](https://gitalk.github.io/), [Valine](https://valine.js.org/en/))
+- Pageview ([LeanCloud](https://leancloud.cn/))
+- Analytics ([Google Analytics](https://analytics.google.com/analytics/web/))
+- RSS ([jekyll-feed](https://github.com/jekyll/jekyll-feed))
 
-### Site
+## Skins
 
-Main settings for the site
+TeXt has 6 built-in skins, you can also set up your own skin.
 
-* **title**: name of your site
-* **description**: description of your site
-* **logo**: small logo for the site (300x * 300x)
-* **cover**: large background image on the index page
+| `default` | `dark` | `forest` |
+| --- |  --- | --- |
+| ![Default](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_default.jpg) | ![Dark](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_dark.jpg) | ![Forest](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_forest.jpg) |
 
-* **name**: name site owner
-* **email**: mail address of the site owner
-* **author**: author name
-* **author_image**: small image of author (300x * 300px)
-* **disqus**: add a disqus forum for your post
+| `ocean` | `chocolate` | `orange` |
+| --- |  --- | --- |
+| ![Ocean](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_ocean.jpg) | ![Chocolate](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_chocolate.jpg) | ![Orange](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/skins_orange.jpg) |
 
-### Social
+### Highlight Theme
 
-The template allows to add all major social platforms to your site.
-Fill the the form for each platform. If you leave the share_* entries empty, the sharing buttons below a post are not shown.  If you leave the **url** and **desc** empty the icons are not shown on the index page, but the share icons on the article pages remains untouched (Thanks to [Phil](https://github.com/philsturgeon))
+TeXt use [Tomorrow](https://github.com/chriskempson/tomorrow-theme) as the highlight theme.
 
-* **icon**:	name of social platform (must match a name of [font-awsome](http://fortawesome.github.io/Font-Awesome/) icon set )
-* **url**:	url of your account
-* **desc**: slogan of the platform
-* **share_url**: share url
-* **share_title**: first part of url for the title
-* **share_link**: second part of the share url for the link to the post
+| `tomorrow` | `tomorrow-night` | `tomorrow-night-eighties` | `tomorrow-night-blue` | `tomorrow-night-bright` |
+| --- |  --- | --- | --- |  --- |
+| ![Tomorrow](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow.png) | ![Tomorrow Night](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night.png) | ![Tomorrow Night Eighties](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-eighties.png) | ![Tomorrow Night Blue](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-blue.png) | ![Tomorrow Night Bright](https://raw.githubusercontent.com/kitian616/jekyll-TeXt-theme/master/screenshots/highlight_tomorrow-night-bright.png) |
 
-The Liquid template engine will magical combine the different parts to a share url.
+## Documentation
 
-```
-http://twitter.com/share?text=post_title&amp;url=post_url
-````
+### Start
 
-See [_config.yml](https://github.com/dirkfabisch/mediator/blob/master/_config.yml) for more examples.
+- [Quick Start](https://kitian616.github.io/jekyll-TeXt-theme/docs/en/quick-start)
+- [Update from 1.x to 2.x](https://kitian616.github.io/jekyll-TeXt-theme/docs/en/update-from-1-to-2)
 
-Licensing
----------
+### Customization
 
-[MIT](https://github.com/dirkfabisch/mediator/blob/master/LICENCE) with no added caveats, so feel free to use this on your site without linking back to me or using a disclaimer or anything silly like that.
+- [Configuration](https://kitian616.github.io/jekyll-TeXt-theme/docs/en/configuration)
+- [Navigation](https://kitian616.github.io/jekyll-TeXt-theme/docs/en/navigation)
+- [Layouts](https://kitian616.github.io/jekyll-TeXt-theme/docs/en/layouts)
+- [Logo and Favicon](https://kitian616.github.io/jekyll-TeXt-theme/docs/en/logo-and-favicon)
+- [Authors](https://kitian616.github.io/jekyll-TeXt-theme/docs/en/authors)
+- [Internationalization](https://kitian616.github.io/jekyll-TeXt-theme/docs/en/i18n)
 
-Contact
--------
-I'd love to hear from you at [@dirkfabisch](https://twitter.com/dirkfabisch). Feel free to open issues if you run into trouble or have suggestions. Pull Requests always welcome.
+### Content
+
+- [Writing Posts](https://kitian616.github.io/jekyll-TeXt-theme/docs/en/writing-posts)
+- [Additional styles](https://kitian616.github.io/jekyll-TeXt-theme/docs/en/additional-styles)
+- [Extensions](https://kitian616.github.io/jekyll-TeXt-theme/docs/en/extensions)
+- [Markdown Enhancements](https://kitian616.github.io/jekyll-TeXt-theme/docs/en/markdown-enhancements)
+
+## Demo Pages
+
+| Name | Description |
+| --- | --- |
+| [Home](https://kitian616.github.io/jekyll-TeXt-theme/test/) | Home page |
+| [Archive](https://kitian616.github.io/jekyll-TeXt-theme/archive.html) | Archive page |
+| [Layout Examples](https://kitian616.github.io/jekyll-TeXt-theme/samples.html) | Examples for different layouts |
+
+## License
+
+TeXt Theme is [MIT licensed](https://github.com/kitian616/jekyll-TeXt-theme/blob/master/LICENSE).
