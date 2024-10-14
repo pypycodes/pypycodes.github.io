@@ -69,3 +69,9 @@ paginate_path: /page:num/
 search: true
 copyright: "copyright. All rights reserved. - pypycodes"
 logo: /assets/images/logo.png
+search_provider: algolia
+algolia:
+  application_id: A1P29EWZ3T # YOUR_APPLICATION_ID
+  index_name: pypycodes.github.io # YOUR_INDEX_NAME
+  search_only_api_key: 062a5da1edfa85e862474ae7435545d4 # YOUR_SEARCH_ONLY_API_KEY
+  powered_by: true # true (default), false
