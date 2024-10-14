@@ -10,8 +10,6 @@ tags:
   - RKE
   - K3S
 read_time: true
-comments: true  # disable comments on this post
-# image:  # URL to a hero image associated with the post
 ---
 
 ## Accessing Private Repositories on GitHub Container Registry (GHCR) with k3s and RKE

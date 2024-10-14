@@ -10,8 +10,6 @@ tags:
   - wsl
   - gpg
 read_time: true
-comments: true  # disable comments on this post
-# image:  # URL to a hero image associated with the post
 ---
 
 If you've generated a GPG key on Windows and need to use it within your WSL (Windows Subsystem for Linux) environment, this guide will walk you through the steps to export the key from Windows, import it into WSL, and configure it for use in Git or other applications.
