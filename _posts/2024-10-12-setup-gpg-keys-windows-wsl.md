@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "Well Known Architecture for Kubernetes Microservices"
+title:  "GPG keys setup for WSL usage"
 date:   2024-10-11 10:00:00
 categories: Architecture
-tags: featured
+tags: gpg keys, wsl
 author:
   name: Pypycodes
   picture: /assets/images/author.jpg

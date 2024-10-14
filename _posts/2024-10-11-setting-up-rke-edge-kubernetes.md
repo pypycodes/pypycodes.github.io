@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "Well Known Architecture for Kubernetes Microservices"
+title:  "How to setup Kubernetes using Rancher Kubernetes Engine"
 date:   2024-10-11 10:00:00
 categories: Architecture
-tags: featured
+tags: RKE
 author:
   name: Pypycodes
   picture: /assets/images/author.jpg

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Well Known Architecture for Kubernetes Microservices"
+title:  "Using Private repositories with Auth on K3s or RKE kubernetes"
 date:   2024-10-11 10:00:00
 categories: Architecture
 tags: featured
