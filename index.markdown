@@ -9,7 +9,7 @@
 
 layout: home
 paginate: true
-alt_title: "Architects Diary"
+alt_title: ""
 sub_title: "Daily Diary of Work"
 # image: /assets/images/bg.jpg
 introduction: |
