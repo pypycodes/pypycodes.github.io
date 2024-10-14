@@ -69,6 +69,10 @@ defaults:
     values:
       layout: post
       read_time: true
+      author:
+        name: Pypycodes
+        picture: /assets/images/author.jpg
+      comments: true        
   # # _recipes
   # - scope:
   #     path: "_recipes"
