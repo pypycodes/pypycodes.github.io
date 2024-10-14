@@ -3,34 +3,13 @@ layout: post
 title:  "How to setup Kubernetes using Rancher Kubernetes Engine"
 date:   2024-10-11 10:00:00
 categories: Architecture
-tags: RKE
-author:
-  name: Pypycodes
-  picture: /assets/images/author.jpg
+tags:
+  - featured
+  - kubernetes
+  - k8s
 read_time: true
-# optional alternate title to replace page.title at the top of the page
-# alt_title: "Basically Basic"
-
-# optional sub-title below the page title
-# sub_title: "The name says it all"
-
-# optional intro text below titles, Markdown allowed
-# introduction: |
-#     Basically Basic is a Jekyll theme meant to be a substitute for the default --- [Minima](https://github.com/jekyll/minima). Conventions and features found in Minima are fully supported by **Basically Basic**.
-
-# optional call to action links
-# actions:
-#   - label: "Learn More"
-#     icon: github  # references name of svg icon, see full list below
-#     url: "http://url-goes-here.com"
-#   - label: "Download"
-#     icon: download  # references name of svg icon, see full list below
-#     url: "http://url-goes-here.com"
-
-# image:  # URL to a hero image associated with the post (e.g., /assets/page-pic.jpg)
-# post specific author data if different from what is set in _config.yml 
-
-comments: true  # disable comments on this post 
+comments: true  # disable comments on this post
+# image:  # URL to a hero image associated with the post
 ---
 Rancher Kubernetes Engine (RKE) is a Kubernetes installer that simplifies the deployment of Kubernetes clusters in various environments. RKE is known for its ease of use and compatibility with multiple platforms, including on-premises servers and cloud environments. This guide will take you through setting up a Kubernetes cluster with RKE on Linux servers.
 
