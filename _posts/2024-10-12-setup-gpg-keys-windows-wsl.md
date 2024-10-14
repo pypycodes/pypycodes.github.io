@@ -2,7 +2,7 @@
 layout: post
 title:  "GPG keys setup for WSL usage"
 date:   2024-10-12 10:00:00
-categories: Architecture
+categories: [gpg, wsl, private and public keys]
 tags:
   - featured
   - kubernetes
@@ -10,6 +10,7 @@ tags:
   - wsl
   - gpg
 read_time: true
+excerpt: If you've generated a GPG key on Windows and need to use it within your WSL (Windows Subsystem for Linux) environment, this guide will walk you through the steps to export the key from Windows, import it into WSL, and configure it for use in Git or other applications.
 ---
 
 If you've generated a GPG key on Windows and need to use it within your WSL (Windows Subsystem for Linux) environment, this guide will walk you through the steps to export the key from Windows, import it into WSL, and configure it for use in Git or other applications.

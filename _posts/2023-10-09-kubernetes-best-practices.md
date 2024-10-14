@@ -2,12 +2,13 @@
 layout: post
 title:  "Well Known Architecture for Kubernetes Microservices"
 date:   2023-10-09 10:00:00
-categories: Architecture
+categories: [Architecture, Kubernetes]
 tags:
   - featured
   - kubernetes
   - k8s
 read_time: true
+excerpt: As organizations increasingly embrace microservices for their scalability, resilience, and efficiency, Kubernetes has become the de facto platform for orchestrating these services. Kubernetes, with its container management prowess, aligns naturally with the microservices architecture. However, deploying microservices on Kubernetes introduces its own set of challenges. Below are the best practices that can help architects effectively design and manage microservices on Kubernetes.
 ---
 
 
