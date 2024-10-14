@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Well Known Architecture for Kubernetes Microservices"
+title:  "Setting up Kubernetes for the Edge Devices using K3s"
 date:   2024-10-11 10:00:00
 categories: Architecture
 tags: featured
