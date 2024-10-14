@@ -2,12 +2,13 @@
 layout: post
 title:  "Setting up Kubernetes for the Edge Devices using K3s"
 date:   2024-10-10 10:00:00
-categories: Architecture
+categories: [Kubernetes,K3s]
 tags:
   - featured
   - kubernetes
   - k8s
 read_time: true
+excerpt: Kubernetes, the leading platform for container orchestration, can sometimes be resource-intensive, especially for smaller deployments or edge computing environments. Enter **K3s** – a lightweight, certified Kubernetes distribution by Rancher Labs. It’s specifically designed to be low on resources, making it ideal for development, IoT, and edge use cases.
 
 ---
 Kubernetes, the leading platform for container orchestration, can sometimes be resource-intensive, especially for smaller deployments or edge computing environments. Enter **K3s** – a lightweight, certified Kubernetes distribution by Rancher Labs. It’s specifically designed to be low on resources, making it ideal for development, IoT, and edge use cases.

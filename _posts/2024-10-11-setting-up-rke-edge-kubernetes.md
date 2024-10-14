@@ -2,12 +2,13 @@
 layout: post
 title:  "How to setup Kubernetes using Rancher Kubernetes Engine"
 date:   2024-10-11 10:00:00
-categories: Architecture
+categories: [RKE, Kubernetes for Edge,Architecture]
 tags:
   - featured
   - kubernetes
   - k8s
 read_time: true
+excerpt: Rancher Kubernetes Engine (RKE) is a Kubernetes installer that simplifies the deployment of Kubernetes clusters in various environments. RKE is known for its ease of use and compatibility with multiple platforms, including on-premises servers and cloud environments. This guide will take you through setting up a Kubernetes cluster with RKE on Linux servers.
 ---
 Rancher Kubernetes Engine (RKE) is a Kubernetes installer that simplifies the deployment of Kubernetes clusters in various environments. RKE is known for its ease of use and compatibility with multiple platforms, including on-premises servers and cloud environments. This guide will take you through setting up a Kubernetes cluster with RKE on Linux servers.
 

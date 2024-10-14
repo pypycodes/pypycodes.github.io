@@ -2,7 +2,7 @@
 layout: post
 title:  "Using Private repositories with Auth on K3s or RKE kubernetes"
 date:   2024-10-13 10:00:00
-categories: Architecture
+categories: [ k3s, RkE, Private repo auth]
 tags:
   - featured
   - kubernetes
@@ -10,9 +10,8 @@ tags:
   - RKE
   - K3S
 read_time: true
+excerpt: In this guide, we'll walk through the steps to configure k3s and Rancher Kubernetes Engine (RKE) clusters to pull images from private repositories hosted on GitHub Container Registry (GHCR). By the end of this guide, your clusters will be able to securely access and deploy containers from private GHCR repositories.
 ---
-
-## Accessing Private Repositories on GitHub Container Registry (GHCR) with k3s and RKE
 
 In this guide, we'll walk through the steps to configure k3s and Rancher Kubernetes Engine (RKE) clusters to pull images from private repositories hosted on GitHub Container Registry (GHCR). By the end of this guide, your clusters will be able to securely access and deploy containers from private GHCR repositories.
 
