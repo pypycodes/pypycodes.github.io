@@ -27,6 +27,12 @@ url: "https://pypycodes.github.io" # the base hostname & protocol for your site,
 twitter_username: pypycodes
 github_username:  pypycodes
 
+
+author:
+  name: Pypycodes
+  twitter: pypycodes
+  picture: /assets/images/johndoe.png
+
 # Build settings
 # theme: minima
 # plugins:
