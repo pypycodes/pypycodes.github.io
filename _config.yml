@@ -37,6 +37,11 @@ author:
 # theme: minima
 # plugins:
 #   - jekyll-feed
+      # gem "jekyll-feed"
+      # gem "jekyll-seo-tag"
+      # gem "jekyll-sitemap"
+      # gem "jekyll-paginate"
+      # gem "jekyll-algolia"
 # theme: jekyll-theme-basically-basic
 remote_theme: "mmistakes/jekyll-theme-basically-basic@1.4.5"
 # Exclude from processing.
@@ -63,3 +68,4 @@ paginate: 5  # amount of posts to show per page
 paginate_path: /page:num/
 search: true
 copyright: "copyright. All rights reserved. - pypycodes"
+logo: /assets/images/logo.png
