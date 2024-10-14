@@ -62,3 +62,4 @@ remote_theme: "mmistakes/jekyll-theme-basically-basic@1.4.5"
 paginate: 5  # amount of posts to show per page
 paginate_path: /page:num/
 search: true
+copyright: "copyright. All rights reserved. - pypycodes"
