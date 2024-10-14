@@ -6,6 +6,10 @@ categories: Architecture
 tags: featured
 tipue_search_active: true
 # image: /assets/article_images/2014-08-29-welcome-to-jekyll/desktop.JPG
+author:
+  name: Pypycodes
+  picture: /assets/images/author.jpg
+tags: kubernetes  
 ---
 
 ## Accessing Private Repositories on GitHub Container Registry (GHCR) with k3s and RKE
