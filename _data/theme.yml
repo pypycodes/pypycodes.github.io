@@ -39,7 +39,7 @@
 #   cv_volunteer: "Volunteer"
 #   cv_work: "Work"
 
-# google_fonts:
-#   - name: "Fira Sans"
-#     weights: "400,400i,600,600i"
-#   - name: "Fira Sans Condensed"
+google_fonts:
+  - name: "Ubuntu"
+    weights: "400,400i,600,600i"
+  - name: "Ubuntu"
