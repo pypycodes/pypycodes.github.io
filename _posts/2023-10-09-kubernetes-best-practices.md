@@ -8,8 +8,6 @@ tags:
   - kubernetes
   - k8s
 read_time: true
-comments: true  # disable comments on this post
-# image:  # URL to a hero image associated with the post
 ---
 
 
