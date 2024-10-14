@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Well Known Architecture for Kubernetes Microservices"
-date:   2023-10-11 10:00:00
+date:   2023-10-09 10:00:00
 categories: Architecture
 tags:
   - featured

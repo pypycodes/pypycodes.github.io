@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Setting up Kubernetes for the Edge Devices using K3s"
-date:   2024-10-11 10:00:00
+date:   2024-10-10 10:00:00
 categories: Architecture
 tags:
   - featured

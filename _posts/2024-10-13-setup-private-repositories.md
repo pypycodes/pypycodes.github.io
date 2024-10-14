@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Using Private repositories with Auth on K3s or RKE kubernetes"
-date:   2024-10-11 10:00:00
+date:   2024-10-13 10:00:00
 categories: Architecture
 tags:
   - featured

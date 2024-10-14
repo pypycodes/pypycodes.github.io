@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "GPG keys setup for WSL usage"
-date:   2024-10-11 10:00:00
+date:   2024-10-12 10:00:00
 categories: Architecture
 tags:
   - featured
