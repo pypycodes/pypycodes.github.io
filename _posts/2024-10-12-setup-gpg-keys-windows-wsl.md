@@ -1,15 +1,36 @@
 ---
 layout: post
-title:  "How to Use a Windows-Created GPG Key in WSL"
-date:   2024-10-12 00:00:00
+title:  "Well Known Architecture for Kubernetes Microservices"
+date:   2024-10-11 10:00:00
 categories: Architecture
 tags: featured
-tipue_search_active: true
-# image: /assets/article_images/2014-08-29-welcome-to-jekyll/desktop.JPG
 author:
   name: Pypycodes
   picture: /assets/images/author.jpg
-tags: gpg, wsl  
+
+# optional alternate title to replace page.title at the top of the page
+# alt_title: "Basically Basic"
+
+# optional sub-title below the page title
+# sub_title: "The name says it all"
+
+# optional intro text below titles, Markdown allowed
+# introduction: |
+#     Basically Basic is a Jekyll theme meant to be a substitute for the default --- [Minima](https://github.com/jekyll/minima). Conventions and features found in Minima are fully supported by **Basically Basic**.
+
+# optional call to action links
+# actions:
+#   - label: "Learn More"
+#     icon: github  # references name of svg icon, see full list below
+#     url: "http://url-goes-here.com"
+#   - label: "Download"
+#     icon: download  # references name of svg icon, see full list below
+#     url: "http://url-goes-here.com"
+
+# image:  # URL to a hero image associated with the post (e.g., /assets/page-pic.jpg)
+# post specific author data if different from what is set in _config.yml 
+
+comments: true  # disable comments on this post 
 ---
 
 If you've generated a GPG key on Windows and need to use it within your WSL (Windows Subsystem for Linux) environment, this guide will walk you through the steps to export the key from Windows, import it into WSL, and configure it for use in Git or other applications.
