@@ -31,7 +31,7 @@ github_username:  pypycodes
 author:
   name: Pypycodes
   twitter: pypycodes
-  picture: /assets/images/johndoe.png
+  picture: /assets/images/author.jpg
 
 # Build settings
 # theme: minima
@@ -64,14 +64,51 @@ remote_theme: "mmistakes/jekyll-theme-basically-basic@1.4.5"
 #   - vendor/gems/
 #   - vendor/ruby/
 
-paginate: 5  # amount of posts to show per page
+# Liquid
+liquid:
+  error_mode: strict
+
+# Build settings
+markdown: kramdown
+theme: jekyll-theme-basically-basic
+plugins: # previously gems
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+feed:
+  path: atom.xml
+
+# Pagination - https://jekyllrb.com/docs/pagination/
+paginate: 10
 paginate_path: /page:num/
+
+lang: en-US
 search: true
-copyright: "copyright. All rights reserved. - pypycodes"
-logo: /assets/images/logo.png
+search_full_content: true
 search_provider: algolia
+copyright: "All rights reserved - pypycodes"
+logo: /assets/images/author.jpg
+
 algolia:
   application_id: A1P29EWZ3T # YOUR_APPLICATION_ID
   index_name: pypycodes.github.io # YOUR_INDEX_NAME
   search_only_api_key: 062a5da1edfa85e862474ae7435545d4 # YOUR_SEARCH_ONLY_API_KEY
   powered_by: true # true (default), false
+
+# Front Matter Defaults
+defaults:
+  # _posts
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      layout: post
+      read_time: true
+  # # _recipes
+  # - scope:
+  #     path: "_recipes"
+  #     type: recipes
+  #   values:
+  #     layout: post
+  #     read_time: true  
