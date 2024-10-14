@@ -1,209 +1,209 @@
 {
-    "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
-    "basics": {
-      "name": "Pavan G",
-      "label": "Enterprise Architect",
-      "image": "https://media.licdn.com/dms/image/v2/C5603AQGftKPtdJcOQQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1633971871477?e=1733961600&v=beta&t=z4z2H2MR8JUE2E4xS9FnwahissqGDNl_fyBzvYqep5A",
-      "email": "onepavan@outlook.com",
-      "phone": "99 99 99 9900",
-      "location": {
-        "address": "55 rue de l'Amiral Defforges",
-        "postalCode": "56000",
-        "city": "Mumbai",
-        "countryCode": "IN",
-        "region": "Thane"
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Pavan G",
+    "label": "Enterprise Architect",
+    "image": "https://media.licdn.com/dms/image/v2/C5603AQGftKPtdJcOQQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1633971871477?e=1733961600&v=beta&t=z4z2H2MR8JUE2E4xS9FnwahissqGDNl_fyBzvYqep5A",
+    "email": "onepavan@outlook.com",
+    "phone": "99 99 99 9900",
+    "location": {
+      "address": "55 rue de l'Amiral Defforges",
+      "postalCode": "56000",
+      "city": "Mumbai",
+      "countryCode": "IN",
+      "region": "Thane"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "pgop",
+        "url": "https://www.linkedin.com/in/pgop/"
       },
-      "profiles": [
-        {
-          "network": "LinkedIn",
-          "username": "pgop",
-          "url": "https://www.linkedin.com/in/pgop/"
-        },
-        {
-          "network": "Github",
-          "username": "pypycodes",
-          "url": "https://github.com/pypycodes"
-        }
+      {
+        "network": "Github",
+        "username": "pypycodes",
+        "url": "https://github.com/pypycodes"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "MGDIS",
+      "position": "Lead Developer",
+      "startDate": "2021-01-31",
+      "highlights": [
+        "Development of a Chrome/Firefox extension allowing us to impersonate any account on multiple environments (Vue, TS, Node)",
+        "Built an highly-available/scalable platform to exchange data between customer environments (Java, SpringBoot, Apache Pulsar, Kong)",
+        "CI optimisation to reduce build time for the teams (GitLab)",
+        "Complete refactoring of our biggest NodeJS service to be Dependency-Injected",
+        "Development of internal tooling to be able to mass-audit our SAAS environments by executing JS scripts in sandboxed VMs",
+        "First, and only developer, to be in the SRE team with 24/24 7/7 on-call schedules",
+        "..."
+      ],
+      "url": "https://www.mgdis.fr/",
+      "location": "Vannes, Bretagne, France"
+    },
+    {
+      "name": "MGDIS",
+      "position": "Full-stack Developer",
+      "startDate": "2019-01-31",
+      "endDate": "2021-01-31",
+      "highlights": [
+        "Frontend development using AngularJS and VueJS",
+        "Complete migration from Gulp to Webpack on our older services",
+        "Reworked http cache handling to improve performances on static resources",
+        "Improved image build time by reworking our DockerFile(s)",
+        "Introduced Mongo-In-Memory to improve tests stability",
+        "..."
+      ],
+      "url": "https://www.mgdis.fr/",
+      "location": "Vannes, Bretagne, France"
+    },
+    {
+      "name": "STEF",
+      "position": "Agent de quaie",
+      "startDate": "2017-02-28",
+      "endDate": "2019-05-31",
+      "highlights": [],
+      "location": "Yffiniac, Bretagne, France"
+    },
+    {
+      "name": "McDonald's",
+      "position": "Équipier",
+      "startDate": "2014-01-31",
+      "endDate": "2017-02-28",
+      "highlights": [],
+      "location": "Langueux, Bretagne, France"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Université Bretagne Sud",
+      "area": "",
+      "studyType": "Master Informatique",
+      "startDate": "2016-09-30",
+      "endDate": "2018-06-30",
+      "score": "Fairly good",
+      "courses": [
+        "Concurrency in Systems",
+        "System and Network Administration",
+        "Programming on Distributed Systems",
+        "Web Development"
       ]
     },
-    "work": [
-      {
-        "name": "MGDIS",
-        "position": "Lead Developer",
-        "startDate": "2021-01-31",
-        "highlights": [
-          "Development of a Chrome/Firefox extension allowing us to impersonate any account on multiple environments (Vue, TS, Node)",
-          "Built an highly-available/scalable platform to exchange data between customer environments (Java, SpringBoot, Apache Pulsar, Kong)",
-          "CI optimisation to reduce build time for the teams (GitLab)",
-          "Complete refactoring of our biggest NodeJS service to be Dependency-Injected",
-          "Development of internal tooling to be able to mass-audit our SAAS environments by executing JS scripts in sandboxed VMs",
-          "First, and only developer, to be in the SRE team with 24/24 7/7 on-call schedules",
-          "..."
-        ],
-        "url": "https://www.mgdis.fr/",
-        "location": "Vannes, Bretagne, France"
-      },
-      {
-        "name": "MGDIS",
-        "position": "Full-stack Developer",
-        "startDate": "2019-01-31",
-        "endDate": "2021-01-31",
-        "highlights": [
-          "Frontend development using AngularJS and VueJS",
-          "Complete migration from Gulp to Webpack on our older services",
-          "Reworked http cache handling to improve performances on static resources",
-          "Improved image build time by reworking our DockerFile(s)",
-          "Introduced Mongo-In-Memory to improve tests stability",
-          "..."
-        ],
-        "url": "https://www.mgdis.fr/",
-        "location": "Vannes, Bretagne, France"
-      },
-      {
-        "name": "STEF",
-        "position": "Agent de quaie",
-        "startDate": "2017-02-28",
-        "endDate": "2019-05-31",
-        "highlights": [],
-        "location": "Yffiniac, Bretagne, France"
-      },
-      {
-        "name": "McDonald's",
-        "position": "Équipier",
-        "startDate": "2014-01-31",
-        "endDate": "2017-02-28",
-        "highlights": [],
-        "location": "Langueux, Bretagne, France"
-      }
-    ],
-    "education": [
-      {
-        "institution": "Université Bretagne Sud",
-        "area": "",
-        "studyType": "Master Informatique",
-        "startDate": "2016-09-30",
-        "endDate": "2018-06-30",
-        "score": "Fairly good",
-        "courses": [
-          "Concurrency in Systems",
-          "System and Network Administration",
-          "Programming on Distributed Systems",
-          "Web Development"
-        ]
-      },
-      {
-        "institution": "ENSIBS",
-        "area": "",
-        "studyType": "Ingénieur Conception Logiciels",
-        "startDate": "2015-09-30",
-        "endDate": "2016-08-31",
-        "score": "Fairly good",
-        "courses": [
-          "Software Engineering",
-          "Development of a complete solution, tailored to meet specific customer requirements"
-        ]
-      },
-      {
-        "institution": "IUT Lannion",
-        "area": "",
-        "studyType": "DUT Informatique",
-        "startDate": "2013-09-30",
-        "endDate": "2015-09-30",
-        "score": "Good",
-        "courses": []
-      }
-    ],
-    "projects": [
-      {
-        "highlights": [
-          "2 dedicated servers communicating through a wireguard tunnel",
-          "Namespaced linux networks to have the host use the public internet, and a subnet going through an external-provider wireguard tunnel",
-          "Public applications exposed behind an nginx reverse-proxy",
-          "Secured through a manual iptable configuration",
-          "Private applications reachable only from a wireguard client",
-          "With TLS certificate auto-renewal"
-        ],
-        "description": "Deployed a fully automated media stack",
-        "name": "Fully automated, media-consuming application(s)",
-        "startDate": "2023-11-08"
-      }
-    ],
-    "skills": [
-      {
-        "name": "Web Development",
-        "keywords": [
-          "TypeScript",
-          "VueJS",
-          "AngularJS",
-          "Javascript",
-          "Node",
-          "WebFlux"
-        ]
-      },
-      {
-        "name": "High availability applications",
-        "keywords": [
-          "SpringBoot",
-          "Apache Pulsar",
-          "Apache Camel",
-          "Project Reactor",
-          "K8S"
-        ]
-      },
-      {
-        "name": "System administration",
-        "keywords": [
-          "Bash",
-          "Firewall configuration",
-          "Ip routing",
-          "Wireguard"
-        ]
-      },
-      {
-        "name": "Databases",
-        "keywords": [
-          "MongoDB",
-          "Postgres",
-          "ElasticSearch",
-          "Redis"
-        ]
-      },
-      {
-        "name": "Methodology",
-        "keywords": [
-          "Domain Driven Development",
-          "Hexagonal Architecture",
-          "Agile"
-        ]
-      }
-    ],
-    "languages": [
-      {
-        "language": "French",
-        "fluency": "Native Speaker"
-      },
-      {
-        "language": "English",
-        "fluency": "Fluent"
-      }
-    ],
-    "interests": [
-      {
-        "name": "Cooking",
-        "keywords": [
-          "Lasagne",
-          "Hachis Parmentier",
-          "Purée maison"
-        ]
-      },
-      {
-        "name": "Mechanic auto/moto"
-      }
-    ],
-    "meta": {
-      "canonical": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/sample.resume.json",
-      "version": "v1.0.0",
-      "lastModified": "2017-12-24T15:53:00",
-      "theme": "stackoverflow"
+    {
+      "institution": "ENSIBS",
+      "area": "",
+      "studyType": "Ingénieur Conception Logiciels",
+      "startDate": "2015-09-30",
+      "endDate": "2016-08-31",
+      "score": "Fairly good",
+      "courses": [
+        "Software Engineering",
+        "Development of a complete solution, tailored to meet specific customer requirements"
+      ]
+    },
+    {
+      "institution": "IUT Lannion",
+      "area": "",
+      "studyType": "DUT Informatique",
+      "startDate": "2013-09-30",
+      "endDate": "2015-09-30",
+      "score": "Good",
+      "courses": []
     }
+  ],
+  "projects": [
+    {
+      "highlights": [
+        "2 dedicated servers communicating through a wireguard tunnel",
+        "Namespaced linux networks to have the host use the public internet, and a subnet going through an external-provider wireguard tunnel",
+        "Public applications exposed behind an nginx reverse-proxy",
+        "Secured through a manual iptable configuration",
+        "Private applications reachable only from a wireguard client",
+        "With TLS certificate auto-renewal"
+      ],
+      "description": "Deployed a fully automated media stack",
+      "name": "Fully automated, media-consuming application(s)",
+      "startDate": "2023-11-08"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Web Development",
+      "keywords": [
+        "TypeScript",
+        "VueJS",
+        "AngularJS",
+        "Javascript",
+        "Node",
+        "WebFlux"
+      ]
+    },
+    {
+      "name": "High availability applications",
+      "keywords": [
+        "SpringBoot",
+        "Apache Pulsar",
+        "Apache Camel",
+        "Project Reactor",
+        "K8S"
+      ]
+    },
+    {
+      "name": "System administration",
+      "keywords": [
+        "Bash",
+        "Firewall configuration",
+        "Ip routing",
+        "Wireguard"
+      ]
+    },
+    {
+      "name": "Databases",
+      "keywords": [
+        "MongoDB",
+        "Postgres",
+        "ElasticSearch",
+        "Redis"
+      ]
+    },
+    {
+      "name": "Methodology",
+      "keywords": [
+        "Domain Driven Development",
+        "Hexagonal Architecture",
+        "Agile"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "French",
+      "fluency": "Native Speaker"
+    },
+    {
+      "language": "English",
+      "fluency": "Fluent"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Cooking",
+      "keywords": [
+        "Lasagne",
+        "Hachis Parmentier",
+        "Purée maison"
+      ]
+    },
+    {
+      "name": "Mechanic auto/moto"
+    }
+  ],
+  "meta": {
+    "canonical": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/sample.resume.json",
+    "version": "v1.0.0",
+    "lastModified": "2017-12-24T15:53:00",
+    "theme": "stackoverflow"
   }
+}
