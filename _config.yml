@@ -9,7 +9,7 @@ name: Architect's Diary
 author: pypycodes
 
 # Short bio or description (displayed in the header)
-description: A working log of an architect
+description: working log
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: /images/author.jpg
@@ -89,7 +89,7 @@ plugins:
 
 include: ['_pages']
 
-paginate: 5
+paginate: 3
 paginate_path: /page:num/
 
 # Exclude these files from your production _site
