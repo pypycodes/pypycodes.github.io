@@ -6,6 +6,10 @@ categories: Architecture
 tags: featured
 tipue_search_active: true
 # image: /assets/article_images/2014-08-29-welcome-to-jekyll/desktop.JPG
+author:
+  name: Pypycodes
+  picture: /assets/images/author.jpg
+tags: gpg, wsl  
 ---
 
 If you've generated a GPG key on Windows and need to use it within your WSL (Windows Subsystem for Linux) environment, this guide will walk you through the steps to export the key from Windows, import it into WSL, and configure it for use in Git or other applications.

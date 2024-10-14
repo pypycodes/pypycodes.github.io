@@ -6,6 +6,10 @@ categories: Architecture
 tags: featured
 tipue_search_active: true
 # image: /assets/article_images/2014-08-29-welcome-to-jekyll/desktop.JPG
+author:
+  name: Pypycodes
+  picture: /assets/images/author.jpg
+tags: kubernetes  
 ---
 Kubernetes, the leading platform for container orchestration, can sometimes be resource-intensive, especially for smaller deployments or edge computing environments. Enter **K3s** – a lightweight, certified Kubernetes distribution by Rancher Labs. It’s specifically designed to be low on resources, making it ideal for development, IoT, and edge use cases. 
 
