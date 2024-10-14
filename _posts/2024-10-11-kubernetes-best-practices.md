@@ -7,7 +7,7 @@ tags: featured
 author:
   name: Pypycodes
   picture: /assets/images/author.jpg
-
+read_time: true
 # optional alternate title to replace page.title at the top of the page
 # alt_title: "Basically Basic"
 
@@ -31,7 +31,6 @@ author:
 # post specific author data if different from what is set in _config.yml 
 
 comments: true  # disable comments on this post
-
 ---
 
 
