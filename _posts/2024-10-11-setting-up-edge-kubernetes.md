@@ -32,7 +32,7 @@ author:
 
 comments: true  # disable comments on this post 
 ---
-Kubernetes, the leading platform for container orchestration, can sometimes be resource-intensive, especially for smaller deployments or edge computing environments. Enter **K3s** – a lightweight, certified Kubernetes distribution by Rancher Labs. It’s specifically designed to be low on resources, making it ideal for development, IoT, and edge use cases. 
+Kubernetes, the leading platform for container orchestration, can sometimes be resource-intensive, especially for smaller deployments or edge computing environments. Enter **K3s** – a lightweight, certified Kubernetes distribution by Rancher Labs. It’s specifically designed to be low on resources, making it ideal for development, IoT, and edge use cases.
 
 In this guide, we'll walk through the process of setting up a K3s cluster. This article assumes you have basic knowledge of Linux commands and server setup.
 
