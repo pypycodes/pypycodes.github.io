@@ -14,6 +14,10 @@ I always feel the content is important than the actual hosting platform. While H
 
 So I believe that with Github pages I can experiment and create impact with my content.
 
+## Why use pseudo name for the blog and the github repo
+
+I am die-hard coder and have always been passionate about the coding so the name "pypycodes" resonates that essance.
+
 ## Disclaimer
 
 The contents are sometimes fed to LLM's to provide better consice messaging.
