@@ -1,23 +1,23 @@
 ---
 layout: page
-title: About Architect's Diary
+title: 
 permalink: /about/
 ---
 
 ## Hello Readers
 
-Glad that you took some time to read my blog. I work as an Solutions Architect with focus on Automation, DevOps, AWS Cloud.This is my daily working log which helps me give back to the community of the learnings, new discovery and interesting topics or point of views that I as an Architect would have for the world. You can connect with me via email or linkedin using the footer links.
+Thank you for taking the time to read my blog. I work as a Solutions Architect focusing on Automation, DevOps, and AWS Cloud. This blog serves as my daily log, where I share my learnings, discoveries, and interesting topics or viewpoints as an Architect. You can connect with me via email or LinkedIn using the footer links.
 
-## Why host on Github and Not Medium or similar Blogging websites ?
+## Why host on GitHub and not Medium or similar blogging websites?
 
-I always feel the content is important than the actual hosting platform. While Hosting platforms are flexible and have better reach to the audience, hosting on Github Pages is easy and less demanding. It is also stress free of distractions on the page like it's ad free, clean and to the point content.
+I believe content is more important than the hosting platform. While platforms like Medium offer flexibility and a broader audience, hosting on GitHub Pages is easy and less demanding. It is also distraction-free, ad-free, and clean, focusing solely on the content.
 
-So I believe that with Github pages I can experiment and create impact with my content.
+With GitHub Pages, I can experiment and create impactful content.
 
-## Why use pseudo name for the blog and the github repo
+## Why use a pseudonym for the blog and the GitHub repo?
 
-I am die-hard coder and have always been passionate about the coding so the name "pypycodes" resonates that essance.
+I am a die-hard coder and have always been passionate about coding, so the name "pypycodes" resonates with that essence.
 
 ## Disclaimer
 
-The contents are sometimes fed to LLM's to provide better consice messaging.
+The content is sometimes fed to LLMs to provide better concise messaging.
