@@ -1,12 +1,12 @@
 ---
 layout: page
-title: 
+title: ""
 permalink: /about/
 ---
 
 ## Hello Readers
 
-Thank you for taking the time to read my blog. I work as a Solutions Architect focusing on Automation, DevOps, and AWS Cloud. This blog serves as my daily log, where I share my learnings, discoveries, and interesting topics or viewpoints as an Architect. You can connect with me via email or LinkedIn using the footer links.
+Thank you for taking the time to read my blog. I work as a Solutions Architect focusing on Automation, DevOps, and AWS Cloud. This blog serves as my daily log, where I share my learnings, discoveries, and interesting topics or viewpoints as an Architect. You can connect with me via email or LinkedIn using the footer links. I am an avid DILBERT FAN, that explains the favicon or the blog image :)
 
 ## Why host on GitHub and not Medium or similar blogging websites?
 
@@ -20,4 +20,5 @@ I am a die-hard coder and have always been passionate about coding, so the name 
 
 ## Disclaimer
 
-The content is sometimes fed to LLMs to provide better concise messaging.
+- The content is sometimes fed to LLMs to provide better concise messaging.
+- Rights of the Dilbert Image belongs to its creators. Used here in good faith.
