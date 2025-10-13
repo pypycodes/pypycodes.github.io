@@ -44,27 +44,27 @@ def lambda_handler(event, context):
 
   Node JS Example:
 
-  ``` node
+```javascript
   const opentelemetry = require('@opentelemetry/api');
 
-function dtLog(msg) {
-    const spanContext = opentelemetry.trace.getSpan(opentelemetry.context.active()).spanContext();
-    if (spanContext.isValid()) {
-        const traceId = spanContext.traceId;
-        const spanId = spanContext.spanId;
-        console.log(`[! dt dt.trace_id=${traceId},dt.span_id=${spanId}] - ${msg}`);
-    } else {
-        console.log(msg);
-    }
-}
+  function dtLog(msg) {
+      const spanContext = opentelemetry.trace.getSpan(opentelemetry.context.active()).spanContext();
+      if (spanContext.isValid()) {
+          const traceId = spanContext.traceId;
+          const spanId = spanContext.spanId;
+          console.log(`[! dt dt.trace_id=${traceId},dt.span_id=${spanId}] - ${msg}`);
+      } else {
+          console.log(msg);
+      }
+  }
 
-exports.handler = async (event) => {
-    dtLog("Hello world from Lambda!");
-    return {
-        statusCode: 200,
-        body: 'Hello from Lambda!'
-    };
-};
+  exports.handler = async (event) => {
+      dtLog("Hello world from Lambda!");
+      return {
+          statusCode: 200,
+          body: 'Hello from Lambda!'
+      };
+  };
 
 ```
 
