@@ -17,7 +17,8 @@ Dynatrace offers robust support for collecting OpenTelemetry (OTEL) data, includ
 To enrich your Lambda logs with trace and span IDs for contextualized logging in Dynatrace, you can modify your logging function to include this information.
 
 Python Example:
-``` python
+
+```python
 import logging
 from opentelemetry import trace
 
@@ -64,12 +65,15 @@ exports.handler = async (event) => {
         body: 'Hello from Lambda!'
     };
 };
+
 ```
-2. ECS Container Logging with OpenTelemetry and FireLens for Dynatrace:
+
+2. ECS Container Logging with OpenTelemetry for Dynatrace:
 For ECS containers, you can leverage AWS FireLens with Fluent Bit to route logs and enrich them with OTEL data before sending them to Dynatrace.
 
-ECS Task Definition (Partial Example):
-```
+ECS Task Definition (Partial Example)
+
+```kubernetes
 {
   "containerDefinitions": [
     {
@@ -113,11 +117,8 @@ ECS Task Definition (Partial Example):
 
 Further Reading:
 
-Ingest from OTEL: 
-[https://docs.dynatrace.com/docs/ingest-from/opentelemetry]
+Ingest from OTEL [https://docs.dynatrace.com/docs/ingest-from/opentelemetry]
 
-Lambda OTEL
-[https://docs.dynatrace.com/docs/ingest-from/amazon-web-services/integrate-into-aws/aws-lambda-integration/aws-lambda-classic/aws-lambda-otel-integration/aws-lambda-otel-setup]
+Lambda OTEL [https://docs.dynatrace.com/docs/ingest-from/amazon-web-services/integrate-into-aws/aws-lambda-integration/aws-lambda-classic/aws-lambda-otel-integration/aws-lambda-otel-setup]
 
-ECS OTEL
-[https://docs.dynatrace.com/docs/ingest-from/amazon-web-services/integrate-into-aws/aws-ecs]
+ECS OTEL [https://docs.dynatrace.com/docs/ingest-from/amazon-web-services/integrate-into-aws/aws-ecs]
