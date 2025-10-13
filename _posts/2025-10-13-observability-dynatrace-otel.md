@@ -43,7 +43,7 @@ def lambda_handler(event, context):
 
   Node JS Example:
 
-  ``` nodejs
+  ``` node
   const opentelemetry = require('@opentelemetry/api');
 
 function dtLog(msg) {
@@ -114,10 +114,10 @@ ECS Task Definition (Partial Example):
 Further Reading:
 
 Ingest from OTEL: 
-https://docs.dynatrace.com/docs/ingest-from/opentelemetry
+[https://docs.dynatrace.com/docs/ingest-from/opentelemetry]
 
 Lambda OTEL
-https://docs.dynatrace.com/docs/ingest-from/amazon-web-services/integrate-into-aws/aws-lambda-integration/aws-lambda-classic/aws-lambda-otel-integration/aws-lambda-otel-setup
+[https://docs.dynatrace.com/docs/ingest-from/amazon-web-services/integrate-into-aws/aws-lambda-integration/aws-lambda-classic/aws-lambda-otel-integration/aws-lambda-otel-setup]
 
 ECS OTEL
-https://docs.dynatrace.com/docs/ingest-from/amazon-web-services/integrate-into-aws/aws-ecs
+[https://docs.dynatrace.com/docs/ingest-from/amazon-web-services/integrate-into-aws/aws-ecs]
