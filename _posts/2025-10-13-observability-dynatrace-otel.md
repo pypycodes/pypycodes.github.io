@@ -73,7 +73,7 @@ For ECS containers, you can leverage AWS FireLens with Fluent Bit to route logs 
 
 ECS Task Definition (Partial Example)
 
-```kubernetes
+```yaml
 {
   "containerDefinitions": [
     {
