@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Observability with Dynatrace and OpenTelemetry(OTEL) instrumentations"
-date:   2025-10-13 10:00:00
+date:   2025-10-12 10:00:00
 categories: [Architecture, Observability, OpenTelemetry]
 tags:
   - observability
