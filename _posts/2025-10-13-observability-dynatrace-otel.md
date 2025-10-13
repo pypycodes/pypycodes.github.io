@@ -13,7 +13,7 @@ excerpt: Dynatrace offers robust support for collecting OpenTelemetry (OTEL) dat
 ---
 Dynatrace offers robust support for collecting OpenTelemetry (OTEL) data, including logs, from AWS Lambda functions and ECS containers. Here are examples of how to instrument these environments for logging with OTEL for Dynatrace.
 
-- AWS Lambda Log Enrichment with OpenTelemetry for Dynatrace:
+1. AWS Lambda Log Enrichment with OpenTelemetry for Dynatrace:
 To enrich your Lambda logs with trace and span IDs for contextualized logging in Dynatrace, you can modify your logging function to include this information.
 
 Python Example:
@@ -68,7 +68,7 @@ def lambda_handler(event, context):
 
 ```
 
-- ECS Container Logging with OpenTelemetry for Dynatrace:
+2. ECS Container Logging with OpenTelemetry for Dynatrace:
 For ECS containers, you can leverage AWS FireLens with Fluent Bit to route logs and enrich them with OTEL data before sending them to Dynatrace.
 
 ECS Task Definition (Partial Example)
